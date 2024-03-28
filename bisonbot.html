@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiwibot Eyes</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        video {
+            width: 100%; /* Set the width of the video to 100% of the viewport */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer;
+        }
+
+        /* Hide default browser controls */
+        video::-webkit-media-controls {
+            display:none !important;
+        }
+        
+        video::-webkit-media-controls-enclosure {
+            display:none !important;
+        }
+    </style>
+</head>
+<body>
+
+<video id="kiwibotVideo" loop onclick="navigateTo('second_screen.html')">
+    <source src="Kiwibot eyes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<script>
+    function navigateTo(page) {
+        window.location.href = page;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var video = document.getElementById('kiwibotVideo');
+
+        // Play the video after a short delay
+        setTimeout(function () {
+            video.play().catch(err => console.log(err));
+        }, 1000);
+
+        // Toggle fullscreen on video click
+        video.addEventListener('click', function () {
+            this.requestFullscreen().catch(err => console.log(err));
+        });
+    });
+</script>
+
+</body>
+</html>
